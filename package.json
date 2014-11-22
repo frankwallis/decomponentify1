@@ -25,16 +25,17 @@
     "through": "~2.3.4"
   },
   "devDependencies": {
-    "domready": "~1.0.4",
+    "browserify": "~3.32.0",
     "chai": "~1.9.0",
-    "mocha": "~1.17.1",
-    "browserify": "~3.32.0"
+    "component": "^1.0.0",
+    "domready": "~1.0.4",
+    "mocha": "~1.17.1"
   },
   "readmeFilename": "README.md",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "component install -d && node_modules/.bin/mocha"
+    "test": "node_modules/component/bin/component-install -d && node_modules/.bin/mocha"
   }
 }
