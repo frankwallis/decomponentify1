@@ -2,11 +2,7 @@
 
 A browserify transform to enable the easy use of [componentjs](https://github.com/component) components in browserify client javascript projects.
 
-This can be used in conjunction with [deamdify](https://github.com/jaredhanson/deamdify) to require AMD components from bower as well.
-
-NB: For more information about how to use debowerify to create stand-alone library bundles
-check out [bower-resolve](https://github.com/eugeneware/bower-resolve) and the 
-examples in the README.
+Shamelessly copied from [debowerify](https://github.com/eugeneware/debowerify)
 
 [![build status](https://secure.travis-ci.org/frankwallis/decomponentify1.png)](http://travis-ci.org/frankwallis/decomponentify1)
 
@@ -20,27 +16,28 @@ $ npm install decomponentify1
 
 ## How to use.
 
-Install some bower components:
+Install some components directly from github:
 
 ```
-# creates files in components/screenfull/
-$ component install screenfull
+$ component install components/underscore
 ```
 
-Require the component file by it's component identifier (ie. in this case "screenfull"):
+Require the component file by it's component identifier (ie. in this case "underscore"):
 
 ``` js
 // public/scripts/app.js
-var _screenfull = require('screenfull'); // the remote component
+var _ = require('underscore'); // the remote component directly from github
+var $ = require('jquery');     // from bower via debowerify
 var domready = require('domready'); // a regular browserify npm component
 
 domready(function () {
   var button = document.getElementById('fullscreen');
   button.addEventListener('click', function (evt) {
-    // screenfull adds itself to window.screenfull - but we can get to it
-    if (screenfull.enabled) {
-      screenfull.toggle(this);
-    }
+  	evt.preventDefault();
+    var name = 'harry';
+    var templateData = $('#sayHello').text();
+        var compiled = _.template(templateData, {'data': name });
+        $('#helloDiv').html(compiled);
   });
 });
 ```
