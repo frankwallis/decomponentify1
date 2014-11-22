@@ -1,0 +1,21 @@
+{
+  "name": "decomponentify1-test",
+  "version": "1.0.0",
+  "scripts": [
+    "test/fixtures/*.js"
+  ],
+  "styles": [
+  ],
+  "templates": [
+  ],
+  "files": [
+  ],
+  "dependencies": {
+    "components/underscore": "*"
+  },
+  "development": {
+  	"dependencies": {
+	    "component/humanize-number": "*"
+    }
+  }
+}

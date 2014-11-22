@@ -1,0 +1,41 @@
+{
+  "name": "decomponentify1",
+  "version": "0.7.1",
+  "description": "A browserify transform to resolve dependencies from component.json using component v1",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/frankwallis/decomponentify1"
+  },
+  "keywords": [
+    "bower",
+    "component",
+    "components",
+    "browserify",
+    "transform"
+  ],
+  "authors": [
+    "Eugene Ware <eugene@noblesamurai.com>",
+    "Frank Wallis <fwallis@outlook.com>"
+  ],
+  "license": "BSD",
+  "dependencies": {
+    "component-resolver": "^1.2.7",
+    "falafel": "~0.3.1",
+    "through": "~2.3.4"
+  },
+  "devDependencies": {
+    "domready": "~1.0.4",
+    "deamdify": "~0.1.1",
+    "chai": "~1.9.0",
+    "mocha": "~1.17.1",
+    "browserify": "~3.32.0"
+  },
+  "readmeFilename": "README.md",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "component install -d && node_modules/.bin/mocha"
+  }
+}
