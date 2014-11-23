@@ -1,6 +1,6 @@
 {
   "name": "decomponentify1",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "A browserify transform to resolve dependencies from component.json using component v1",
   "main": "index.js",
   "repository": {

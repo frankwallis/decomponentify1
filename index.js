@@ -51,12 +51,12 @@ module.exports = function (file) {
     parent = parent || componentTree;
    
     for (var dependencyName in parent.dependencies) {
-      if (dependencyName.split('/')[1] == name)
+      if ((dependencyName.split('/')[1] == name) || (parent.dependencies[dependencyName].node.name == name))
         return parent.dependencies[dependencyName];
     }
     if (parent.development) {
       for (var dependencyName in parent.development.dependencies) {
-        if (dependencyName.split('/')[1] == name)
+        if ((dependencyName.split('/')[1] == name) || (parent.development.dependencies[dependencyName].node.name == name))
           return parent.development.dependencies[dependencyName];
       }
     }
