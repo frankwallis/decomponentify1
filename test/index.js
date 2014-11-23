@@ -43,6 +43,24 @@ describe('decomponentify', function() {
     });
   });
 
+  // it('should be able to require by repo name', function(done) {
+  //   var jsPath = path.join(__dirname, 'fixtures', 'call-angular-repo.js');
+  //   var b = browserify();
+  //   b.add(jsPath);
+  //   b.transform(decomponentify);
+  //   b.bundle(function (err, src) {
+  //     if (err) return done(err);
+  //     vm.runInNewContext(src, {
+  //       console: {
+  //         log: function (msg) {
+  //           expect(msg).to.equal('12,345');
+  //           done();
+  //         }
+  //       }
+  //     });
+  //   });
+  // });
+
   // it('should be able to decomponentify a submodule', function(done) {
   //   var jsPath = path.join(__dirname, '..', 'public', 'by_subpath.js');
   //   var b = browserify();

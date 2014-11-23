@@ -3,8 +3,9 @@ var through = require('through');
 var falafel = require('falafel');
 
 var resolve = require('component-resolver');
+var flatten = require('component-flatten');
 
-var componentTree;
+var branches;
 
 module.exports = function (file) {
   if (!/\.(js|jsx|(lit)?coffee(\.md)?|ls|ts)$/.test(file)) return through();
@@ -15,9 +16,9 @@ module.exports = function (file) {
 
   function write (buf) { data += buf; }
   function end () {
-    if (componentTree === undefined) {
+    if (branches === undefined) {
         resolve(process.cwd(), { development: true }, function (err, tree) {
-          componentTree = tree;
+          branches = flatten(tree); 
           next();
         });
     } else {
@@ -48,19 +49,9 @@ module.exports = function (file) {
    * @returns {Object|null} The node as provided by component or null if not found
    */
   function getModule (name, parent) {
-    parent = parent || componentTree;
-   
-    for (var dependencyName in parent.dependencies) {
-      if ((dependencyName.split('/')[1] == name) || (parent.dependencies[dependencyName].node.name == name))
-        return parent.dependencies[dependencyName];
-    }
-    if (parent.development) {
-      for (var dependencyName in parent.development.dependencies) {
-        if ((dependencyName.split('/')[1] == name) || (parent.development.dependencies[dependencyName].node.name == name))
-          return parent.development.dependencies[dependencyName];
-      }
-    }
-    return null;
+    return branches.filter(function(branch) {
+      return((branch.node.name == name) || (branch.node.repository && (branch.node.repository.split('/')[1] == name)))
+    })[0];
   };
 
   function parse () {

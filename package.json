@@ -1,6 +1,6 @@
 {
   "name": "decomponentify1",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "A browserify transform to resolve dependencies from component.json using component v1",
   "main": "index.js",
   "repository": {
@@ -20,6 +20,7 @@
   ],
   "license": "BSD",
   "dependencies": {
+    "component-flatten": "^1.0.1",
     "component-resolver": "^1.2.7",
     "falafel": "~0.3.1",
     "through": "~2.3.4"
